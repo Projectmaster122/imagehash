@@ -33,4 +33,4 @@ final_hex = magicnum_hex + "03" + metadata_hex + hex_string
 hash_object = hashlib.sha256(final_hex.encode())
 hash_value = hash_object.hexdigest()
 
-print(final_hex)
+print(hash_value)

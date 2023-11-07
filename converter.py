@@ -2,7 +2,7 @@ from PIL import Image, ExifTags
 import hashlib
 
 #magic number define
-magicnumber = "PHOTODNA0.0.1"
+magicnumber = "IMAGEHASH0.0.1"
 magicnum_hex = magicnumber.encode().hex()
 
 #open image and get exif

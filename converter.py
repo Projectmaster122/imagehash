@@ -19,33 +19,21 @@ def hashmaker():
     # TODO: address = exif['Address']
     date = exif['DateTime']
     camera = exif['Model']
-
+    #hexify exif
     date_hex = date.encode().hex()
     camera_hex = camera.encode().hex()
-
+    #make metadata
     metadata_string = date_hex + "00" + camera_hex + "01"
-
+    # hexify
     metadata_bytes = bytes.fromhex(metadata_string)
     metadata_hex = metadata_bytes.hex()
-
+    # make final hex output
     final_hex = magicnum_hex + "03" + metadata_hex + hex_string
 
-
+    #hash
     hash_object = hashlib.sha256(final_hex.encode())
     hash_value = hash_object.hexdigest()
 
-    #print(f"Magic Number: {magicnum_hex}/{magicnumber}")
-    #print(f"Image name: {imgname}")
-    #print(f"Metadata:")
-    #print(f"Camera: {camera_hex}/{camera}")
-    #print(f"Date: {date_hex}/{date}")
-    #print(f"SIGNATURE: {hash_value}")
-
-    #ques = input("would you like to see the full hex value? (y/n)")
-    #if ques == "n":
-    #    print("goodbye")
-    #    exit(0)
-    #print(final_hex)
     main(date, camera, date_hex, camera_hex, metadata_hex, final_hex, hash_value, magicnumber, magicnum_hex, imgname)
 
 def main(date, camera, date_hex, camera_hex, metadata_hex, final_hex, hash_value, magicnumber, magicnum_hex, imgname):
